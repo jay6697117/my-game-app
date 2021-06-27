@@ -1,5 +1,5 @@
-import logo from './assets/logo.svg';
-import './assets/App.css';
+import logo from './assets/img/logo.svg';
+import './assets/css/App.css';
 
 function App() {
   return (
@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          hello, world!
         </p>
         <a
           className="App-link"
