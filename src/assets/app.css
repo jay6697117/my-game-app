@@ -1,6 +1,11 @@
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
+}
+
+#root {
+  font-family: Consolas, 'Avenir', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #2c3e50;
 }
 
 ol,
@@ -10,7 +15,7 @@ ul {
 
 .board-row:after {
   clear: both;
-  content: "";
+  content: '';
   display: table;
 }
 
@@ -20,11 +25,11 @@ ul {
 }
 
 .square {
-  color:red;
+  color: red;
   background: #fff;
   border: 1px solid #999;
   float: left;
-  font-size: 24px;
+  font-size: 32px;
   font-weight: bold;
   line-height: 64px;
   height: 64px;
