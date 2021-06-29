@@ -1,23 +1,32 @@
 import React from 'react';
 import './assets/app.css';
 
-// function App() {
-//   return <div className='App'>hello world</div>;
-// }
-
+// Square组件
 class Square extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      index: undefined,
+    };
+  }
   render() {
-    return <button className='square'>{/* TODO */}</button>;
+    console.log(`this.props:`, this.props);
+    return (
+      <button className={`square square-${this.props.index}`} onClick={e => alert(this.props.index)}>
+        {this.state.index}
+      </button>
+    );
   }
 }
 
 class Board extends React.Component {
-  renderSquare(i) {
-    return <Square />;
+  renderSquare(index) {
+    return <Square index={index} />;
   }
 
   render() {
-    const status = 'Next player: X';
+    const status = 'Next player: 张娜拉';
 
     return (
       <div>
