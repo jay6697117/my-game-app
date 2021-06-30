@@ -21,7 +21,7 @@ ul {
 
 .status {
   font-size: 18px;
-  background-color: #ccc;
+  background-color: #eee;
   padding: 10px;
   border-radius: 5px;
   margin-bottom: 10px;
@@ -61,5 +61,5 @@ ul {
 
 .game-info {
   margin-left: 20px;
-  background-color: #ccc;
+  /* background-color: #ccc; */
 }

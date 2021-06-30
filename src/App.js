@@ -35,7 +35,8 @@ class Board extends React.Component {
     this.state = {
       squares: Array(9).fill(undefined),
       isNowX: true,
-      isGameOver: false
+      isGameOver: false,
+      lastIndex: undefined
     };
   }
 
@@ -50,9 +51,15 @@ class Board extends React.Component {
       return;
     }
 
+    if (index === this.state.lastIndex) {
+      alert('已经走过的地方不能重复点击');
+      return;
+    }
+
     const tempSquares = _.clone(this.state.squares);
     tempSquares[index] = this.state.isNowX ? 'X' : 'O';
     this.setState({
+      lastIndex: index,
       squares: tempSquares,
       isNowX: !this.state.isNowX
     });
@@ -95,7 +102,9 @@ class Board extends React.Component {
 
     this.setState({
       squares: Array(9).fill(undefined),
-      isNowX: true
+      isNowX: true,
+      isGameOver: false,
+      lastIndex: undefined
     });
   }
 
@@ -121,6 +130,7 @@ class Board extends React.Component {
 
     return (
       <div>
+        <div>lastIndex:{JSON.stringify(this.state.lastIndex)}</div>
         <div className='status'>{status}</div>
         <button className='btn' onClick={this.handleRestart.bind(this)}>
           重新开始
