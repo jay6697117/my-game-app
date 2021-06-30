@@ -1,60 +1,44 @@
 import React from 'react';
+import _ from 'lodash';
 import './assets/app.css';
 
-// Square组件
+// Board儿子: Square组件
 class Square extends React.Component {
+  render() {
+    // console.log(`Square this.props:`, this.props);
+    return (
+      <button className={`square square-${this.props.index}`} onClick={e => this.props.clickBoard(e)}>
+        {this.props.index}
+      </button>
+    );
+  }
+}
+
+// Game儿子: Board组件: 游戏的 state 统一保存在 Board 组件中而不是各个 Square 组件中
+class Board extends React.Component {
   // 所有有 constructor 的 React 组件类应该在其中首先调用 super(props) 函数
   constructor(props) {
     super(props);
 
     this.state = {
-      index: null
-    };
-  }
-
-  // // handleClick事件
-  // handleClick(index, e) {
-  //   console.log(`e`, e);
-  //   e.preventDefault();
-  //   console.log(`index:`, index);
-  //   this.setState({
-  //     index: index
-  //   });
-  // }
-
-  render() {
-    console.log(`this.props:`, this.props);
-    return (
-      // <button className={`square square-${this.props.index}`} onClick={this.handleClick.bind(this, this.props.index)}>
-      //   {this.state.index}
-      // </button>
-      <button className={`square square-${this.props.index}`}>{this.state.index}</button>
-    );
-  }
-}
-
-// Board组件
-class Board extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      squares: Array(9).fill(null)
+      squares: Array(9).fill(undefined)
     };
   }
 
   // handleClick事件
   handleClick(index, e) {
-    console.log(`Board handleClick e`, e);
-    e.preventDefault();
+    // console.log(`Board handleClick this:`, this);
     console.log(`Board handleClick index:`, index);
-    // this.setState({
-    //   index: index
-    // });
+    // console.log(`BoardhandleClick e:`, e);
+    const tempSquares = _.clone(this.state.squares);
+    tempSquares[index] = 'X';
+    this.setState({
+      squares: tempSquares
+    });
   }
 
   renderSquare(index) {
-    return <Square onClick={this.handleClick.bind(this, index)} index={this.state.squares[index]} />;
+    return <Square clickBoard={this.handleClick.bind(this, index)} index={this.state.squares[index]} />;
   }
 
   render() {
@@ -83,7 +67,7 @@ class Board extends React.Component {
   }
 }
 
-// Game组件
+// 自己: Game组件
 class Game extends React.Component {
   render() {
     return (
