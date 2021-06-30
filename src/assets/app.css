@@ -21,13 +21,19 @@ ul {
 
 .status {
   font-size: 18px;
+  background-color: #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.btn {
   margin-bottom: 10px;
 }
 
 .square {
-  color: red;
   background: #fff;
-  border: 1px solid #999;
+  border: 1px solid #666;
   float: left;
   font-size: 32px;
   font-weight: bold;
@@ -55,4 +61,5 @@ ul {
 
 .game-info {
   margin-left: 20px;
+  background-color: #ccc;
 }
